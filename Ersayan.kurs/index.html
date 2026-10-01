@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f3f7ff">
+  <title>QAUIPSIZ — Қауіпсіздік көмекшісі</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Значки (логотип и робот), используются несколько раз -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 48 56">
+    <path d="M24 2 44 10v18c0 13-9 22-20 26C13 50 4 41 4 28V10z" fill="#2f6fe4"/>
+    <rect x="15" y="25" width="18" height="14" rx="3" fill="#fff"/>
+    <path d="M19 25v-4a5 5 0 0 1 10 0v4" stroke="#fff" stroke-width="3" fill="none"/>
+    <circle cx="24" cy="32" r="2" fill="#2f6fe4"/>
+  </symbol>
+  <symbol id="robot" viewBox="0 0 120 130">
+    <ellipse cx="60" cy="108" rx="30" ry="20" fill="#e6efff"/>
+    <rect x="46" y="88" width="28" height="22" rx="8" fill="#fff"/>
+    <path d="M60 92l9 3v6c0 5-4 8-9 10-5-2-9-5-9-10v-6z" fill="#2f6fe4"/>
+    <rect x="14" y="26" width="92" height="64" rx="32" fill="#fff" stroke="#d6e4ff" stroke-width="2"/>
+    <rect x="8" y="46" width="10" height="24" rx="5" fill="#2f6fe4"/>
+    <rect x="102" y="46" width="10" height="24" rx="5" fill="#2f6fe4"/>
+    <rect x="26" y="38" width="68" height="42" rx="21" fill="#10224f"/>
+    <path d="M43 60q6-9 12 0M65 60q6-9 12 0" stroke="#8cc2ff" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <path d="M54 68q6 5 12 0" stroke="#4d8dff" stroke-width="3" fill="none" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<div class="app">
+
+  <!-- 1. ҚОШ КЕЛДІҢІЗ -->
+  <section class="screen" id="s-welcome">
+    <div class="center">
+      <svg class="logo-big"><use href="#logo"/></svg>
+      <h1 class="brand">QAUIPSIZ</h1>
+      <p class="muted">Қауіпсіздік көмекшісі</p>
+      <div class="hero"><svg class="robot-big"><use href="#robot"/></svg></div>
+      <h2>Сәлем! 👋</h2>
+      <p class="muted lead">QAUIPSIZ — күнделікті өмірдегі күдікті жағдайларды анықтап, сізді қауіптен қорғайтын AI көмекшіңіз.</p>
+      <div class="features">
+        <div><span class="ico i-blue">🔍</span>Қауіпті анықтайды</div>
+        <div><span class="ico i-violet">🧠</span>AI талдайды</div>
+        <div><span class="ico i-green">✅</span>Кеңес береді</div>
+        <div><span class="ico i-pink">❤️</span>Сізді қорғайды</div>
+      </div>
+      <button class="btn primary" data-go="login">Кіру →</button>
+      <button class="btn outline" data-go="register">Тіркелу</button>
+    </div>
+  </section>
+
+  <!-- 2. КІРУ -->
+  <section class="screen" id="s-login">
+    <button class="back" data-go="welcome">‹ Артқа</button>
+    <svg class="logo-mid"><use href="#logo"/></svg>
+    <h2>Қайта оралуыңызбен!</h2>
+    <p class="muted">Аккаунтқа кіріңіз</p>
+    <form id="loginForm" novalidate>
+      <label>Email
+        <input type="email" id="loginEmail" placeholder="aizhan@mail.kz" autocomplete="email" required>
+      </label>
+      <label>Құпиясөз
+        <input type="password" id="loginPass" placeholder="••••••" autocomplete="current-password" required>
+      </label>
+      <p class="error" id="loginError"></p>
+      <button class="btn primary" type="submit">Кіру</button>
+    </form>
+    <p class="muted center-text">Аккаунт жоқ па? <a href="#" data-go="register">Тіркелу</a></p>
+  </section>
+
+  <!-- 3. ТІРКЕЛУ -->
+  <section class="screen" id="s-register">
+    <button class="back" data-go="welcome">‹ Артқа</button>
+    <svg class="logo-mid"><use href="#logo"/></svg>
+    <h2>Тіркелу</h2>
+    <p class="muted">Жаңа аккаунт жасаңыз</p>
+    <form id="regForm" novalidate>
+      <label>Аты-жөніңіз
+        <input type="text" id="regName" placeholder="Айжан" autocomplete="name" required>
+      </label>
+      <label>Email
+        <input type="email" id="regEmail" placeholder="aizhan@mail.kz" autocomplete="email" required>
+      </label>
+      <label>Құпиясөз (кемінде 6 таңба)
+        <input type="password" id="regPass" placeholder="••••••" autocomplete="new-password" required>
+      </label>
+      <label>Құпиясөзді қайталаңыз
+        <input type="password" id="regPass2" placeholder="••••••" autocomplete="new-password" required>
+      </label>
+      <p class="error" id="regError"></p>
+      <button class="btn primary" type="submit">Тіркелу</button>
+    </form>
+    <p class="muted center-text">Аккаунт бар ма? <a href="#" data-go="login">Кіру</a></p>
+  </section>
+
+  <!-- 4. БАСТЫ -->
+  <section class="screen with-tabs" id="s-home">
+    <header class="top">
+      <div class="top-brand">
+        <svg class="logo-sm"><use href="#logo"/></svg>
+        <div><b class="brand-sm">QAUIPSIZ</b><span class="muted">Қауіпсіздік көмекшісі</span></div>
+      </div>
+      <button class="avatar" data-go="profile" aria-label="Профиль">👤</button>
+    </header>
+
+    <div class="greet">
+      <div>
+        <h2>Сәлем, <span id="userName">Айжан</span>! 👋</h2>
+        <p class="muted">Өзіңді қорғау — өз қолыңда.<br>Күдікті жағдайды тексеріп, AI көмегін ал.</p>
+      </div>
+      <svg class="robot-sm"><use href="#robot"/></svg>
+    </div>
+
+    <div class="card check-card">
+      <div class="chat-ico">💬</div>
+      <div class="grow">
+        <h3>Жағдайды тексеру</h3>
+        <p class="muted">Мәтінді жазыңыз немесе скриншот жүктеңіз.</p>
+        <button class="btn primary" data-go="check">Бастау →</button>
+      </div>
+    </div>
+
+    <div class="quick">
+      <button data-action="screenshot"><span class="q q1">📷</span>Скриншот қосу</button>
+      <button data-info="examples"><span class="q q2">📄</span>Жағдайлар мысалдары</button>
+      <button data-info="tips"><span class="q q3">🛡️</span>Қауіпсіздік кеңестері</button>
+      <button data-info="knowledge"><span class="q q4">📖</span>Білім орталығы</button>
+    </div>
+
+    <div class="row-between">
+      <h3>Соңғы талдау</h3>
+      <a href="#" data-go="history" class="link">Барлығын көру ›</a>
+    </div>
+    <div id="lastAnalysis"></div>
+  </section>
+
+  <!-- 5. ТЕКСЕРУ -->
+  <section class="screen with-tabs" id="s-check">
+    <button class="back" data-go="home">‹ Артқа</button>
+    <h2>Жағдайды тексеру</h2>
+    <p class="muted">Күдікті хабарламаны мәтін ретінде қойыңыз.</p>
+    <textarea id="checkText" rows="6" placeholder="Мысалы: «Сәлем! Сіз 500 000 тг ұттыңыз! Сілтемеге өтіңіз...»"></textarea>
+
+    <input type="file" id="fileInput" accept="image/*" hidden>
+    <button class="btn outline" id="pickFile">📷 Скриншот қосу</button>
+    <div id="preview" class="preview" hidden>
+      <img id="previewImg" alt="Скриншот">
+      <button class="x" id="removeFile" aria-label="Жою">✕</button>
+    </div>
+
+    <button class="btn primary" id="analyzeBtn">Талдау</button>
+    <div id="result"></div>
+  </section>
+
+  <!-- 6. ТАРИХ -->
+  <section class="screen with-tabs" id="s-history">
+    <h2>Тарих</h2>
+    <p class="muted">Бұрынғы тексерулеріңіз</p>
+    <div id="historyList"></div>
+    <button class="btn outline" id="clearHistory">Тарихты тазалау</button>
+  </section>
+
+  <!-- 7. AI КӨМЕКШІ -->
+  <section class="screen with-tabs" id="s-assistant">
+    <h2>AI көмекші</h2>
+    <p class="muted">Қауіпсіздік туралы сұрақ қойыңыз</p>
+    <div class="chips" id="chips">
+      <button>Фишинг деген не?</button>
+      <button>Құпиясөзді қалай қорғаймын?</button>
+      <button>SMS-код сұрады</button>
+      <button>Жалған сілтемені қалай танимын?</button>
+    </div>
+    <div class="chat" id="chat"></div>
+    <form class="chat-form" id="chatForm">
+      <input type="text" id="chatInput" placeholder="Сұрағыңызды жазыңыз..." autocomplete="off">
+      <button class="btn primary send" type="submit" aria-label="Жіберу">➤</button>
+    </form>
+  </section>
+
+  <!-- 8. ПРОФИЛЬ -->
+  <section class="screen with-tabs" id="s-profile">
+    <h2>Профиль</h2>
+    <div class="card profile-card">
+      <div class="avatar big">👤</div>
+      <h3 id="pName"></h3>
+      <p class="muted" id="pEmail"></p>
+      <p class="muted">Тексеру саны: <b id="pCount">0</b></p>
+    </div>
+    <button class="btn outline" id="logoutBtn">Шығу</button>
+  </section>
+
+  <!-- 9. АҚПАРАТ (мысалдар, кеңестер, білім) -->
+  <section class="screen with-tabs" id="s-info">
+    <button class="back" data-go="home">‹ Артқа</button>
+    <h2 id="infoTitle"></h2>
+    <div id="infoBody"></div>
+  </section>
+
+  <!-- Төменгі меню -->
+  <nav class="tabbar" id="tabbar">
+    <button data-tab="home"><span>🏠</span>Басты</button>
+    <button data-tab="history"><span>🕘</span>Тарих</button>
+    <button data-tab="assistant"><span>🛡️</span>AI көмекші</button>
+    <button data-tab="profile"><span>👤</span>Профиль</button>
+  </nav>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+<script src="script.js"></script>
+</body>
+</html>
